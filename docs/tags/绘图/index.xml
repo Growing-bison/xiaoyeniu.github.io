@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>绘图 on 云中野餐</title>
-    <link>https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E7%BB%98%E5%9B%BE/</link>
+    <link>https://xiaoyeniu.github.io/tags/%E7%BB%98%E5%9B%BE/</link>
     <description>Recent content in 绘图 on 云中野餐</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 10 May 2018 16:16:59 +0800</lastBuildDate>
     
-	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E7%BB%98%E5%9B%BE/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xiaoyeniu.github.io/tags/%E7%BB%98%E5%9B%BE/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>数据处理-简单模型与绘图-01</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <link>https://xiaoyeniu.github.io/year/month/slug/</link>
       <pubDate>Thu, 10 May 2018 16:16:59 +0800</pubDate>
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <guid>https://xiaoyeniu.github.io/year/month/slug/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>数据处理-气象数据-01 </title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <link>https://xiaoyeniu.github.io/year/month/slug/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <guid>https://xiaoyeniu.github.io/year/month/slug/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
