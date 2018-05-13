@@ -1,12 +1,9 @@
 ---
 title: "数据处理-简单模型与绘图-01"
-
 Description: "作为和师弟师妹简单介绍的文章，主要是有关线性回归建模与图形绘制"
 date: 2018-05-10T16:16:59+08:00
-draft: false
-
+draft: True
 tags: ["R","线性回归","绘图"]
-
 share: true
 ---
 
