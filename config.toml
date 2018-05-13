@@ -13,8 +13,8 @@
 # For developpers, if you modify this theme, put your images in `source/images` folder and
 # use grunt task `build` to synchronize assets
 
-baseURL = "https://xiaoyeniu.github.io/" #一定要用https，github强制安全措施
-# baseURL = "https://growing-bison.github.io/xiaoyeniu.github.io/" #一定要用https，github强制安全措施
+# baseURL = "https://xiaoyeniu.github.io/" #一定要用https，github强制安全措施
+baseURL = "https://growing-bison.github.io/xiaoyeniu.github.io/" #一定要用https，github强制安全措施
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
 title = "云中野餐"
