@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据处理 on 云中野餐</title>
-    <link>https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</link>
+    <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</link>
     <description>Recent content in 数据处理 on 云中野餐</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 09 May 2018 16:16:59 +0800</lastBuildDate>
     
-	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>数据处理-气象数据-01 </title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <link>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</link>
       <pubDate>Wed, 09 May 2018 16:16:59 +0800</pubDate>
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</guid>
       <description>&lt;p&gt;这是关于气象数据从nc到csv处理结果，并展示的过程。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>

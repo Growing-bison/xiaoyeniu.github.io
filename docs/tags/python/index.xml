@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on 云中野餐</title>
-    <link>https://growing-bison.github.io/xiaoyeniu.github.io/tags/python/</link>
+    <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/python/</link>
     <description>Recent content in Python on 云中野餐</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 12 May 2018 22:16:59 +0800</lastBuildDate>
     
-	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github..io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>机器学习-xgboost-调参01 </title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <link>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</link>
       <pubDate>Sat, 12 May 2018 22:16:59 +0800</pubDate>
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</guid>
       <description>&lt;p&gt;这是在使用xgboost过程中简单调参过程。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -24,20 +24,20 @@
     
     <item>
       <title>机器学习-决策树-可视化01 </title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <link>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</link>
       <pubDate>Sat, 12 May 2018 18:16:59 +0800</pubDate>
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</guid>
       <description>&lt;p&gt;这是关于如何对决策树分类器结果可视化的指导。
 &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>关于python自定义包</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <link>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</link>
       <pubDate>Fri, 09 Feb 2018 16:16:59 +0800</pubDate>
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</guid>
       <description>&lt;p&gt;这是关于如何建立python的自定义包的简单笔记，供简单参考。
 &lt;/p&gt;</description>
     </item>
