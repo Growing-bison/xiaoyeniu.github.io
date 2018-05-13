@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>云中野餐</title>
-    <link>https://growing-bison.github.io/xiaoyeniu.github.io/</link>
+    <link>https://growing-bison.github.io/xiaoyeniu.github..io/</link>
     <description>Recent content on 云中野餐</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 10 May 2018 16:16:59 +0800</lastBuildDate>
     
-	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github..io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>数据处理-简单模型与绘图-01</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <link>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</link>
       <pubDate>Thu, 10 May 2018 16:16:59 +0800</pubDate>
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>关于python自定义包</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <link>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</link>
       <pubDate>Fri, 09 Feb 2018 16:16:59 +0800</pubDate>
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</guid>
       <description>&lt;p&gt;这是关于如何建立python的自定义包的简单笔记，供简单参考。
 &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>数据处理-气象数据-01 </title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <link>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</guid>
       <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
