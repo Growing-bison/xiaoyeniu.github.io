@@ -17,7 +17,12 @@
       <pubDate>Thu, 10 May 2018 16:16:59 +0800</pubDate>
       
       <guid>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</guid>
+<<<<<<< HEAD
       <description>&lt;p&gt;&lt;/p&gt;</description>
+=======
+      <description>&lt;p&gt;&amp;ldquo;作为和师弟师妹简单介绍的文章，主要是有关线性回归建模与图形绘制&amp;rdquo;
+&lt;/p&gt;</description>
+>>>>>>> e81672b227f2a72c4a2a0618d7d81f6c69222318
     </item>
     
   </channel>

@@ -13,7 +13,6 @@
 # For developpers, if you modify this theme, put your images in `source/images` folder and
 # use grunt task `build` to synchronize assets
 
-# baseURL = "https://xiaoyeniu.github.io/" #一定要用https，github强制安全措施
 baseURL = "https://growing-bison.github.io/xiaoyeniu.github.io/" #一定要用https，github强制安全措施
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
@@ -124,7 +123,7 @@ canonifyurls = true
   # If false it will flat categories.
   hierarchicalCategories = true
 
-  logo = "images/showcase.png"
+  logo = '1.jpg'
   description = "奔腾在原野，回首不见"
 
   # Customization
@@ -146,9 +145,15 @@ canonifyurls = true
   # There is many free CDN like Cloudinary or you can also use indirectly
   # by using services like Google Photos.
   # Current image is on AWS S3 and delivered by AWS CloudFront.
+<<<<<<< HEAD
   # Otherwise put your image in folder `static/_images/` (development)  or in `source/assets/images/` if you can/00t or don/00t want to build the theme,
   # and use relative url  `your-image.png`
   coverImage = "https://i.ytimg.com/vi/yaAw0n1rqxw/maxresdefault.jpg"
+=======
+  # Otherwise put your image in folder `static/images/` (development)  or in `source/assets/images/` if you can/00t or don/00t want to build the theme,
+  # and use relative url  'your-image.png'
+  coverImage = "3.jpg"
+>>>>>>> e81672b227f2a72c4a2a0618d7d81f6c69222318
 
   # Display an image gallery at the end of a post which have photos variables (false disabled, true enabled)
   imageGallery = true

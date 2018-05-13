@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>调参 on 云中野餐</title>
+    <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E8%B0%83%E5%8F%82/</link>
+    <description>Recent content in 调参 on 云中野餐</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 12 May 2018 22:16:59 +0800</lastBuildDate>
+    
+	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E8%B0%83%E5%8F%82/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>机器学习-xgboost-调参01 </title>
+      <link>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</link>
+      <pubDate>Sat, 12 May 2018 22:16:59 +0800</pubDate>
+      
+      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</guid>
+      <description>&lt;p&gt;这是在使用xgboost过程中简单调参过程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
