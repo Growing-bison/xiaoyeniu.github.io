@@ -20,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.40.3 with theme Tranquilpeak 0.4.3-BETA">
-    <title>数据处理-气象数据-01 </title>
+    <title>数据处理-简单模型与绘图-01</title>
     <meta name="author" content="Jack Lu">
     <meta name="keywords" content="">
 
@@ -28,15 +28,15 @@
     
 
     
-    <meta name="description" content="">
-    <meta property="og:description" content="">
+    <meta name="description" content="作为和师弟师妹简单介绍的文章，主要是有关线性回归建模与图形绘制">
+    <meta property="og:description" content="作为和师弟师妹简单介绍的文章，主要是有关线性回归建模与图形绘制">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="数据处理-气象数据-01 ">
+    <meta property="og:title" content="数据处理-简单模型与绘图-01">
     <meta property="og:url" content="/year/month/slug/">
     <meta property="og:site_name" content="云中野餐">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="云中野餐">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:description" content="作为和师弟师妹简单介绍的文章，主要是有关线性回归建模与图形绘制">
     
     
 
@@ -211,15 +211,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      数据处理-气象数据-01 
+      数据处理-简单模型与绘图-01
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="0001-01-01T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-05-10T16:16:59&#43;08:00">
         
-  January 1, 1
+  May 10, 2018
 
       </time>
     
@@ -232,192 +232,332 @@
             <div class="main-content-wrap">
               <p></p>
 
-<h1 id="一-大体背景介绍">一、大体背景介绍</h1>
+<p>================</p>
 
-<p>由于直接观测数据难以覆盖全面，希望能补充部分数据源，现需对开放的再分析数据进行简单分析。
-- 提取
-需求目标：从某种再分析数据源当中提取全国气象自动监测站点的数据，获取相应站点日数据。
-涉及到几个气象要素：日均气温、日降水、日相对湿度、日辐射、日风速、日最大气温、日最小气温等七个要素。</p>
+<h3 id="首先加载r的包">首先加载R的包</h3>
+
+<pre><code class="language-r">library(flexdashboard)
+library(rJava)
+library(car)
+</code></pre>
+
+<pre><code>## Loading required package: carData
+</code></pre>
+
+<pre><code class="language-r">library(plotly)
+</code></pre>
+
+<pre><code>## Loading required package: ggplot2
+
+## 
+## Attaching package: 'plotly'
+
+## The following object is masked from 'package:ggplot2':
+## 
+##     last_plot
+
+## The following object is masked from 'package:stats':
+## 
+##     filter
+
+## The following object is masked from 'package:graphics':
+## 
+##     layout
+</code></pre>
+
+<pre><code class="language-r">library(ggplot2)
+</code></pre>
+
+<h3 id="1-散点图绘制">1. 散点图绘制</h3>
+
+<p>首先进行基本数据的观察。这里主要几个函数 - 设置文件路径： &gt; setwd()</p>
 
 <ul>
-<li><p>已有资源及数据情况：<br />
-数据源：格式-nc文件，空间分辨率0.125°的网格，时间分辨率小于24小时，时间跨度10年，总文件大小60G左右</p></li>
+<li><p>读入csv文件 &gt; read.csv</p></li>
 
-<li><p>处理分析
-将再分析数据与观测站的数据进行比较，采用均方根误差RMSE作为指标，以月均值为主要对象，区域范围包括中国。</p></li>
+<li><p>ggplot2函数 &gt; ggplot()</p></li>
 </ul>
 
-<h1 id="二-数据提取-处理">二、数据提取、处理、</h1>
-
-<p>提取的前提是对数据源的了解，明确单位、精度、气象要素的正常值范围等。
-准备的文件：全国主要观测站点的经纬度坐标，格式csv/txt等。</p>
-
-<p>大体的流程图如下：</p>
-
-<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/flow1.png" alt="alt text" /></p>
-
-<h1 id="2-1-提取的代码块1">2.1 提取的代码块1</h1>
-
-<p>简单提取程序脚本如下图：</p>
-
-<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/py1.PNG" alt="alt text" /></p>
-
-<h1 id="2-2-异常值和缺失值的代码块1">2.2 异常值和缺失值的代码块1</h1>
-
-<p>异常与缺失处理：</p>
-
-<pre><code>{python}
-# find missing value &amp;&amp; put NaN
-missing = df.ix[(df[df.columns[7]] == 32766)]
-#print('########temperature missing########')
-for index, row in missing.iterrows():
-    #print(row[0], row[4], row[5], row[6], row[7])
-    print(index)
-df[df == 32766] = np.nan
-# get temperature
-tmp = df[df.columns[7]] * 0.1
+<pre><code class="language-r">setwd(&quot;C:/Users/Administrator/Desktop/for_404-figure/datasource&quot;)
+location1_data = read.csv('location1_ndvi1.csv',encoding='UTF-8')
+location1_lm = lm(location1_data$dry_matter.g.m2~location1_data$log_ndvi)
+ggplot(location1_data,
+       aes(x=location1_data$log_ndvi,
+           y=location1_data$dry_matter.g.m2.,
+           label=rownames(location1_data[1])))+
+  geom_point(size=2,color=&quot;blue&quot;)+
+  geom_text(hlabel=rownames(location1_data[1]),
+             alpha=0.3,hjust=0,vjust=2,size=2)+
+  geom_rug()+
+  xlab('log_ndvi')+
+  ylab('dry matter:g/m2')
 </code></pre>
 
-<h1 id="2-3-要素转换的代码块1">2.3 要素转换的代码块1</h1>
+<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m3/unnamed-chunk-2-1.png" alt="" /></p>
 
-<p>主要是对将辐射转成日照时长。</p>
-
-<pre><code>{python}
-def dursun(lat_deg, dt):
-    
-    t = 24.0/pi*(acos(-tan(lat_rad)*tan(theta)))
-    return t
-
-def Ra():
-
-    Ra = 24 * 60 * Gsc * dr * ( (ws * sin(lat_rad) * sin(delta)) + ( cos(lat_rad) * cos(delta) * sin(ws))) / pi
-    return Ra
-
+<pre><code class="language-r">summary(location1_lm)
 </code></pre>
 
-<h1 id="2-4-数据提取结果">2.4 数据提取结果</h1>
-
-<p>考虑存在csv格式文件，文件数量=7个气象要素×194个站点，大小200多Mb。</p>
-
-<p><center> <img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/file1.PNG" alt="再分析数据提取结果" /></p>
-
-<h1 id="三-数据分析">三、数据分析</h1>
-
-<p>准备的数据：<br />
-1. 约200个站点的再分析日值数据（即从nc文件中提取出来，并清洗、转换好）；<br />
-2. 约200个站点的观测站日值数据。<br />
-3. 全国观测站点的经纬度坐标信息。</p>
-
-<p>上述数据均保存在csv文件当中，统一保存的编码格式。</p>
-
-<p>比较累年月值（12个月），月值（某年某月），累年值（某年）等的再分析数据对比观测站数据的误差情况。</p>
-
-<p>数据组织与流向如下图：</p>
-
-<table>
-<thead>
-<tr>
-<th>源</th>
-<th>要素（温度、湿度等）</th>
-<th>时间分辨率</th>
-<th>文件数量及大小</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>再分析</td>
-<td>&hellip;</td>
-<td>10年日值</td>
-<td>1300个左右，200-300M</td>
-</tr>
-
-<tr>
-<td>观测站</td>
-<td>&hellip;</td>
-<td>10年日值</td>
-<td>194个，100M左右</td>
-</tr>
-</tbody>
-</table>
-
-<h1 id="3-1-文件与数据管理">3.1 文件与数据管理</h1>
-
-<p>数据组织变化涉及几个步骤，以其中一个要素分析为例说明如下：</p>
-
-<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/file_struction.png" alt="alt text" /></p>
-
-<h1 id="3-2-数据分析处理与输出">3.2 数据分析处理与输出</h1>
-
-<pre><code>{python}
-
-CMA_datasource_dir = '/media/dira/'
-station_194_dir = '/media/latlon.csv'
-df = pd.read_csv(station_194_dir, header=0, sep=',')
-star_time = datetime(2004, 1, 1).strftime('%Y-%m-%d')
-end_time = datetime(2016, 7, 31).strftime('%Y-%m-%d')
-
-# 2、读入194个CMA观测数据
-val_3 = os.popen(&quot;find /media/dir2 -name '%s*'&quot; \
-                 % (stid)).read()
-#年份、月份提取
-obs_vlu_m = grouped_by_month.mean()
+<pre><code>## 
+## Call:
+## lm(formula = location1_data$dry_matter.g.m2 ~ location1_data$log_ndvi)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -73.25 -31.98 -10.31  23.62 212.98 
+## 
+## Coefficients:
+##                         Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)               316.34      37.07   8.534 3.30e-12 ***
+## location1_data$log_ndvi   257.71      43.78   5.887 1.51e-07 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 51.45 on 65 degrees of freedom
+##   (1 observation deleted due to missingness)
+## Multiple R-squared:  0.3478, Adjusted R-squared:  0.3377 
+## F-statistic: 34.66 on 1 and 65 DF,  p-value: 1.512e-07
 </code></pre>
 
-<h1 id="3-4-数据分析处理与输出">3.4 数据分析处理与输出</h1>
+<h3 id="2-第一次-线性拟合结果中判断异常点">2. 第一次 线性拟合结果中判断异常点</h3>
 
-<p>对应累积年值的计算结果,包含194个站点1-12个月的对应RSEM、相关系数等。</p>
+<p>对第一次拟合模型不满意，希望探寻原数据中是否有异常值影响。
+主要通过学生化残差——离群点、库克距离——强影响点、帽子值——高杠杆点</p>
 
-<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/file3.PNG" alt="alt text" /></p>
+<ul>
+<li>综合绘图函数:influencePlot() # car包</li>
+</ul>
 
-<h1 id="四-数据观测与图表绘制">四、数据观测与图表绘制</h1>
+<pre><code class="language-r">#car::influencePlot(location1_lm, #id.method=list(&quot;x&quot;,&quot;y&quot;),labels=rownames(location1_data[9]),id.n=nrow(location1_data[9]))
+car::influencePlot(location1_lm, method=&quot;identify&quot;)
+</code></pre>
 
-<h3 id="1-观测多个站点在不同时间尺度上的误差分布-误差分布与海拔高度间关系">1. 观测多个站点在不同时间尺度上的误差分布，误差分布与海拔高度间关系。</h3>
+<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m3/unnamed-chunk-3-1.png" alt="" /></p>
 
-<h3 id="2-空间分布上不同站点的情况">2. 空间分布上不同站点的情况。</h3>
+<pre><code>##     StudRes        Hat      CookD
+## 20 2.996216 0.14830962 0.69619267
+## 45 4.941031 0.04515861 0.42443172
+## 47 0.950764 0.12910081 0.06709942
+</code></pre>
 
-<h3 id="准备的数据"><strong>准备的数据：</strong></h3>
+<h3 id="3-二次拟合-删除异常点后拟合">3. 二次拟合：删除异常点后拟合</h3>
 
-<ol>
-<li><p>某个要素的约200个站点的误差及相关系数数据</p></li>
+<p>剔除部分异常点，重新拟合。</p>
 
-<li><p>工具平台：R、GIS、python</p></li>
-</ol>
+<ul>
+<li><p>anova对比：根据P值是否显著，判断是否有差别。
+&gt; anova()</p></li>
 
-<h1 id="4-1-简单频次分布图">4.1 简单频次分布图</h1>
+<li><p>赤池信息准则:选择小值 &gt; AIC()</p></li>
+</ul>
 
-<p>对数据中的RSME绘制简单的分布图</p>
+<pre><code class="language-r">location1_data_edit20_3 = location1_data[-c(1,2,3,20,27,28,29,30,31,32,34,33,42,43,44,45,46),]
+location1_lm2 = lm(location1_data_edit20_3$dry_matter.g.m2.~location1_data_edit20_3$log_ndvi)
+summary(location1_lm2)
+</code></pre>
 
-<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/Daily_h.png" alt="简单分布图" /></p>
+<pre><code>## 
+## Call:
+## lm(formula = location1_data_edit20_3$dry_matter.g.m2. ~ location1_data_edit20_3$log_ndvi)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -65.462 -21.262  -3.482  25.634 107.046 
+## 
+## Coefficients:
+##                                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                        221.96      35.88   6.186  1.3e-07 ***
+## location1_data_edit20_3$log_ndvi   156.39      41.68   3.753 0.000472 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 33.77 on 48 degrees of freedom
+##   (1 observation deleted due to missingness)
+## Multiple R-squared:  0.2268, Adjusted R-squared:  0.2107 
+## F-statistic: 14.08 on 1 and 48 DF,  p-value: 0.0004719
+</code></pre>
 
-<h1 id="4-2-时间序列分布图">4.2 时间序列分布图</h1>
+<pre><code class="language-r">car::influencePlot(location1_lm2, method=&quot;identify&quot;)
+</code></pre>
 
-<p>多个站点的月值图
-<img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/month_help_value.png" alt="多个站点累积月值" /></p>
+<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m3/unnamed-chunk-4-1.png" alt="" /></p>
 
-<h1 id="4-3-空间分布图">4.3 空间分布图</h1>
+<pre><code>##       StudRes        Hat      CookD
+## 1   1.8470285 0.07352792 0.12889873
+## 23  3.5837724 0.02433724 0.12848349
+## 28  0.4995480 0.13561951 0.01988773
+## 30  0.5140136 0.23810427 0.04192757
+## 32 -2.0203538 0.02004473 0.03922777
+</code></pre>
 
-<p>在python上简单绘制的结果
-<img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/map_py.png" alt="py绘制的map" /></p>
+<pre><code class="language-r"># print('———————————————————————————————————————————————————————————————————————————')
+# 对比两个模型效果——ANOVA
+print(anova(location1_lm, location1_lm2))
+</code></pre>
 
-<hr />
+<pre><code>## Analysis of Variance Table
+## 
+## Response: location1_data$dry_matter.g.m2
+##                         Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## location1_data$log_ndvi  1  91732   91732  34.659 1.512e-07 ***
+## Residuals               65 172036    2647                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+</code></pre>
 
-<p>借助GIS绘制的结果
-<img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/map_gis.png" alt="gis绘制的map" /></p>
+<pre><code class="language-r"># print('———————————————————————————————————————————————————————————————————————————')
+# 对比两个模型效果——AIC
+print(AIC(location1_lm, location1_lm2))
+</code></pre>
 
-<h1 id="4-4-简单结论">4.4 简单结论</h1>
+<pre><code>##               df      AIC
+## location1_lm   3 722.1392
+## location1_lm2  3 497.7956
+</code></pre>
 
-<p>1.　温度日值、月值的准确性较高，整体上和观测值基本相符，在具体应用时需区分不同地区</p>
+<h3 id="4-二次拟合结果-对比实测值">4. 二次拟合结果：对比实测值</h3>
 
-<p>2.　准确性较低的区域原因：
-  +  受复杂地形等因素所影响
-  +  另一方面可能是观测数据本身站点少、观测质量</p>
+<p>通过图形观察拟合效果，对比观察与预测值，绘制对比图。</p>
 
-<h1 id="五-小案例线性回归">五、小案例线性回归</h1>
+<ul>
+<li><p>构建dataframe的函数 &gt; data.frame()</p></li>
 
-<p>如何在已有数据基础之上，筛除异常值，并得到最终拟合曲线</p>
+<li><p>绘图函数 &gt; plot() text() point()</p></li>
 
-<p><a href="https://growing-bison.github.io/xiaoyeniu.github.io/img/guides/guide_x/for_404.html">线性回归拟合-示例</a></p>
+<li><p>颜色获取函数 &gt; hsv() hsv(h = 1, s = 1, v = 1, alpha=0.5)</p></li>
+</ul>
+
+<p>颜色选取用hsv函数，对应hsv颜色空间参考<a href="https://codebeautify.org/hsv-to-rgb-converter">https://codebeautify.org/hsv-to-rgb-converter</a></p>
+
+<p><a href="http://sape.inf.usi.ch/quick-reference/ggplot2/colour">http://sape.inf.usi.ch/quick-reference/ggplot2/colour</a></p>
+
+<p><a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf">r color cheatsheet</a></p>
+
+<pre><code class="language-r">fitdata_location1=data.frame(location1_data_edit20_3$dry_matter.g.m2.,
+                             location1_data_edit20_3$log_ndvi)
+
+fit_location1=predict(location1_lm2,
+                      fitdata_location1,
+                      type = &quot;response&quot;)
+
+fitdata_location1_end=data.frame(fitdata_location1,
+                                 fit_location1)
+
+
+plot(fitdata_location1_end$location1_data_edit20_3.log_ndvi,
+     fitdata_location1_end$location1_data_edit20_3.dry_matter.g.m2.,
+     xlab=&quot;ndvi&quot;,
+     ylab = &quot;dry matter:g/m2&quot;, 
+     main = &quot;location1_ndvi与产量拟合_&quot;)
+
+text1_color = hsv(h = 1, s = 0, v = 0.7, alpha=0.5)  # 黑色
+
+text(x=fitdata_location1_end$location1_data_edit20_3.log_ndvi,
+     y=fitdata_location1_end$location1_data_edit20_3.dry_matter.g.m2.,
+     lab=rownames(location1_data[1]),
+     adj=c(0,-0.5),
+     pch=0.5,
+     col = text1_color, 
+     cex = 0.6,  # 字体大小设置
+     pos=2 # 位置
+     )
+
+points(fitdata_location1_end$location1_data_edit20_3.log_ndvi,
+       fitdata_location1_end$fit_location1,
+       pch=10,
+       col=2  # 对应黑色
+       )
+
+text2_color = hsv(h = 1, s = 1, v = 1, alpha=0.3)  # 红色
+
+text(x=fitdata_location1_end$location1_data_edit20_3.log_ndvi,
+     y=fitdata_location1_end$fit_location1, 
+     lab=rownames(location1_data[1]),
+     adj=c(0,-0.5),
+     pch=0.5,
+     col=text2_color,
+     cex = 0.6,
+     pos =3,
+     offset = 0.5  # 相对偏置距离
+     )
+
+legend(&quot;topleft&quot;,c(&quot;实际&quot;,&quot;拟合&quot;), 
+       pch = c(1,10),
+       col = c(1,2),
+       title = &quot;location1_ndvi与产量拟合&quot;)
+</code></pre>
+
+<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m3/unnamed-chunk-5-1.png" alt="" /></p>
+
+<pre><code class="language-r">summary(location1_lm2)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = location1_data_edit20_3$dry_matter.g.m2. ~ location1_data_edit20_3$log_ndvi)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -65.462 -21.262  -3.482  25.634 107.046 
+## 
+## Coefficients:
+##                                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                        221.96      35.88   6.186  1.3e-07 ***
+## location1_data_edit20_3$log_ndvi   156.39      41.68   3.753 0.000472 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 33.77 on 48 degrees of freedom
+##   (1 observation deleted due to missingness)
+## Multiple R-squared:  0.2268, Adjusted R-squared:  0.2107 
+## F-statistic: 14.08 on 1 and 48 DF,  p-value: 0.0004719
+</code></pre>
+
+<h3 id="5-多个曲线对比">5. 多个曲线对比</h3>
+
+<p>对多个月份的数据，绘制拟合曲线图，并在一张图中呈现。 - 求对数：log() - 合并两个表格（dataframe）:melt() - 绘图函数：qplot() - x轴的刻度间隔设置：scale_x_continuous()</p>
+
+<pre><code class="language-r">library(ggplot2)
+library(data.table)
+
+#对比之前几个月的数据，即拟合结果需要保证前后一致性。06月、07月、08月，以及在相应位置的变化应该是呈现一种上升的关系
+# test_x = rnorm(100,mean = 0, sd=1)  # 生成满足正态分布的随机数
+
+test_x = log(runif(100,min = 0,max = 1))
+
+test_x = as.data.frame(test_x)
+
+a_06month = 80
+b_06month = 220
+a_07month = 55
+b_07month = 185
+a_o8month_morepoint = 160
+b_o8month_morepoint = 210
+a_o8month_lesspoint = 270
+b_o8month_lesspoint = 320
+
+df_data = data.frame(x=exp(test_x),
+                     y_06=test_x[,1]*a_06month+b_06month,
+                     y_07=test_x[,1]*a_07month+b_07month,
+                     y_08_more=test_x[,1]*a_o8month_morepoint+b_o8month_morepoint,
+                     y_08_less=test_x[,1]*a_o8month_lesspoint+b_o8month_lesspoint)
+
+df_melt_data = melt(df_data, id=1:5, measure=2:5)
+
+p = qplot(data = df_melt_data,
+          x=df_melt_data$test_x,
+          y=df_melt_data$value,geom='line',
+          color=df_melt_data$variable,
+          main = '拟合结果',
+          xlab = 'NDVI value', 
+          ylab = '模拟的产量：g/m2') 
+
+plot_end = p + scale_x_continuous(breaks = seq(0,1,0.1),labels = seq(0,1,0.1)) + scale_color_hue('图例')
+
+print(plot_end)
+</code></pre>
+
+<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m3/unnamed-chunk-6-1.png" alt="" /></p>
               
             </div>
           </div>
@@ -431,7 +571,7 @@ obs_vlu_m = grouped_by_month.mean()
                     
   <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/r/">R</a>
 
-  <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a>
+  <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">线性回归</a>
 
   <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E7%BB%98%E5%9B%BE/">绘图</a>
 
@@ -446,7 +586,7 @@ obs_vlu_m = grouped_by_month.mean()
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="关于python自定义包">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -454,7 +594,7 @@ obs_vlu_m = grouped_by_month.mean()
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="关于python自定义包">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -532,7 +672,7 @@ obs_vlu_m = grouped_by_month.mean()
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="关于python自定义包">
+                <a class="post-action-btn btn btn--disabled">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -540,7 +680,7 @@ obs_vlu_m = grouped_by_month.mean()
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="关于python自定义包">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -737,7 +877,7 @@ obs_vlu_m = grouped_by_month.mean()
     
   
     
-    <div id="cover" style="background-image:url('https://growing-bison.github.io/xiaoyeniu.github.io/images/1.jpg');"></div>
+    <div id="cover" style="background-image:url('https://growing-bison.github.io/xiaoyeniu.github.io/images/2.jpg');"></div>
   
 
 
