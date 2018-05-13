@@ -6,7 +6,7 @@
     <description>Recent content in Tags on 云中野餐</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2018 16:16:59 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 May 2018 18:16:59 +0800</lastBuildDate>
     
 	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github..io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Python</title>
       <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/python/</link>
-      <pubDate>Fri, 09 Feb 2018 16:16:59 +0800</pubDate>
+      <pubDate>Sat, 12 May 2018 18:16:59 +0800</pubDate>
       
       <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/python/</guid>
       <description></description>
@@ -30,11 +30,29 @@
     </item>
     
     <item>
+      <title>可视化</title>
+      <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</link>
+      <pubDate>Sat, 12 May 2018 18:16:59 +0800</pubDate>
+      
+      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>数据处理</title>
       <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</link>
       <pubDate>Wed, 09 May 2018 16:16:59 +0800</pubDate>
       
       <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>机器学习</title>
+      <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Sat, 12 May 2018 18:16:59 +0800</pubDate>
+      
+      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
       <description></description>
     </item>
     

@@ -4,6 +4,11 @@
   
   <url>
     <loc>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</loc>
+    <lastmod>2018-05-12T18:16:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://growing-bison.github.io/xiaoyeniu.github..io/year/month/slug/</loc>
     <lastmod>2018-05-10T16:16:59+08:00</lastmod>
   </url>
   
@@ -29,13 +34,13 @@
   
   <url>
     <loc>https://growing-bison.github.io/xiaoyeniu.github..io/post/</loc>
-    <lastmod>2018-05-10T16:16:59+08:00</lastmod>
+    <lastmod>2018-05-12T18:16:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://growing-bison.github.io/xiaoyeniu.github..io/tags/python/</loc>
-    <lastmod>2018-02-09T16:16:59+08:00</lastmod>
+    <lastmod>2018-05-12T18:16:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -47,19 +52,31 @@
   
   <url>
     <loc>https://growing-bison.github.io/xiaoyeniu.github..io/tags/</loc>
-    <lastmod>2018-02-09T16:16:59+08:00</lastmod>
+    <lastmod>2018-05-12T18:16:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://growing-bison.github.io/xiaoyeniu.github..io/</loc>
-    <lastmod>2018-05-10T16:16:59+08:00</lastmod>
+    <lastmod>2018-05-12T18:16:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
+    <lastmod>2018-05-12T18:16:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</loc>
     <lastmod>2018-05-09T16:16:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2018-05-12T18:16:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
