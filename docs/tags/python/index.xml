@@ -6,10 +6,30 @@
     <description>Recent content in Python on 云中野餐</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2018 16:16:59 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 May 2018 20:16:59 +0800</lastBuildDate>
     
 	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>机器学习-xgboost-调参01 </title>
+      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <pubDate>Sat, 12 May 2018 20:16:59 +0800</pubDate>
+      
+      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <description>#Import libraries: import pandas as pd import numpy as np from sklearn.ensemble import GradientBoostingClassifier #GBM algorithm from sklearn import cross_validation, metrics #Additional scklearn functions from sklearn.grid_search import GridSearchCV #Perforing grid search import matplotlib.pylab as plt %matplotlib inline from matplotlib.pylab import rcParams rcParams[&#39;figure.figsize&#39;] = 12, 4 # train = pd.read_csv(r&#39;.\xgboost\datasource\learn1_tune_parameter\Dataset&#39;, encoding=&#39;utf-8&#39;) train = pd.read_csv(r&#39;D:\TEST\jupyter\xgboost\datasource\learn1_tune_parameter\Dataset\Train_nyOWmfK.csv&#39;,encoding=&#39;utf-8&#39;) target = &#39;Disbursed&#39; IDcol = &#39;ID&#39;  C:\Users\M4500\Anaconda3\envs\py35_xgboost\lib\site-packages\sklearn\cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved.</description>
+    </item>
+    
+    <item>
+      <title>机器学习-决策树-可视化01 </title>
+      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <pubDate>Sat, 12 May 2018 20:16:59 +0800</pubDate>
+      
+      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <description>决策树结果的可视化-python 一、对于sklearn中的tree模型可视化 1、图形结果输出pdf保存本地；
+2、图形结果显示在界面
+1、图形结果输出pdf保存本地 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) dot_data = tree.export_graphviz(clf, out_file=None) graph = graphviz.Source(dot_data) graph.render(&amp;quot;保存的名字&amp;quot;)  2、图形结果显示在界面 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) # 首先生成graphvis所需的dot数据 dot_data = tree.export_graphviz(clf, # 已经训练的模型 out_file=None, # dot文件输出名称，默认tree.dot feature_names=iris.feature_names, # 特征变量名称 class_names=iris.target_names, # 目标变量名称 filled=False, # 颜色是否填充，默认False-不填充 rounded=True, # 字体设置，默认False special_characters=False # postgript对特殊字符处理，默认false ) # 将dot数据通过graphviz渲染 graph = graphviz.</description>
+    </item>
     
     <item>
       <title>关于python自定义包</title>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>可视化 on 云中野餐</title>
+    <link>https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</link>
+    <description>Recent content in 可视化 on 云中野餐</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 12 May 2018 20:16:59 +0800</lastBuildDate>
+    
+	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>机器学习-决策树-可视化01 </title>
+      <link>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</link>
+      <pubDate>Sat, 12 May 2018 20:16:59 +0800</pubDate>
+      
+      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
+      <description>决策树结果的可视化-python 一、对于sklearn中的tree模型可视化 1、图形结果输出pdf保存本地；
+2、图形结果显示在界面
+1、图形结果输出pdf保存本地 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) dot_data = tree.export_graphviz(clf, out_file=None) graph = graphviz.Source(dot_data) graph.render(&amp;quot;保存的名字&amp;quot;)  2、图形结果显示在界面 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) # 首先生成graphvis所需的dot数据 dot_data = tree.export_graphviz(clf, # 已经训练的模型 out_file=None, # dot文件输出名称，默认tree.dot feature_names=iris.feature_names, # 特征变量名称 class_names=iris.target_names, # 目标变量名称 filled=False, # 颜色是否填充，默认False-不填充 rounded=True, # 字体设置，默认False special_characters=False # postgript对特殊字符处理，默认false ) # 将dot数据通过graphviz渲染 graph = graphviz.</description>
+    </item>
+    
+  </channel>
+</rss>

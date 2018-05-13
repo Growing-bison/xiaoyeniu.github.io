@@ -227,6 +227,100 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+          机器学习-xgboost-调参01 
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-05-12T20:16:59&#43;08:00">
+        
+  May 12, 2018
+
+      </time>
+    
+    
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      #Import libraries: import pandas as pd import numpy as np from sklearn.ensemble import GradientBoostingClassifier #GBM algorithm from sklearn import cross_validation, metrics #Additional scklearn functions from sklearn.grid_search import GridSearchCV #Perforing grid search import matplotlib.pylab as plt %matplotlib inline from matplotlib.pylab import rcParams rcParams['figure.figsize'] = 12, 4 # train = pd.read_csv(r'.\xgboost\datasource\learn1_tune_parameter\Dataset', encoding='utf-8') train = pd.read_csv(r'D:\TEST\jupyter\xgboost\datasource\learn1_tune_parameter\Dataset\Train_nyOWmfK.csv',encoding='utf-8') target = 'Disbursed' IDcol = 'ID'  C:\Users\M4500\Anaconda3\envs\py35_xgboost\lib\site-packages\sklearn\cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved.
+      <p>
+        <a href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+          机器学习-决策树-可视化01 
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-05-12T20:16:59&#43;08:00">
+        
+  May 12, 2018
+
+      </time>
+    
+    
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      决策树结果的可视化-python 一、对于sklearn中的tree模型可视化 1、图形结果输出pdf保存本地；
+2、图形结果显示在界面
+1、图形结果输出pdf保存本地 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) dot_data = tree.export_graphviz(clf, out_file=None) graph = graphviz.Source(dot_data) graph.render(&quot;保存的名字&quot;)  2、图形结果显示在界面 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) # 首先生成graphvis所需的dot数据 dot_data = tree.export_graphviz(clf, # 已经训练的模型 out_file=None, # dot文件输出名称，默认tree.dot feature_names=iris.feature_names, # 特征变量名称 class_names=iris.target_names, # 目标变量名称 filled=False, # 颜色是否填充，默认False-不填充 rounded=True, # 字体设置，默认False special_characters=False # postgript对特殊字符处理，默认false ) # 将dot数据通过graphviz渲染 graph = graphviz.
+      <p>
+        <a href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
           关于python自定义包
         </a>
       </h1>
@@ -321,7 +415,60 @@
             
             <div class="media-body">
               <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+                <h3 class="media-heading">机器学习-xgboost-调参01 </h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">#Import libraries: import pandas as pd import numpy as np from sklearn.ensemble import GradientBoostingClassifier #GBM algorithm from sklearn import cross_validation, metrics #Additional scklearn functions from sklearn.grid_search import GridSearchCV #Perforing grid search import matplotlib.pylab as plt %matplotlib inline from matplotlib.pylab import rcParams rcParams['figure.figsize'] = 12, 4 # train = pd.read_csv(r'.\xgboost\datasource\learn1_tune_parameter\Dataset', encoding='utf-8') train = pd.read_csv(r'D:\TEST\jupyter\xgboost\datasource\learn1_tune_parameter\Dataset\Train_nyOWmfK.csv',encoding='utf-8') target = 'Disbursed' IDcol = 'ID'  C:\Users\M4500\Anaconda3\envs\py35_xgboost\lib\site-packages\sklearn\cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+                <h3 class="media-heading">机器学习-决策树-可视化01 </h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">决策树结果的可视化-python 一、对于sklearn中的tree模型可视化 1、图形结果输出pdf保存本地；
+2、图形结果显示在界面
+1、图形结果输出pdf保存本地 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) dot_data = tree.export_graphviz(clf, out_file=None) graph = graphviz.Source(dot_data) graph.render(&quot;保存的名字&quot;)  2、图形结果显示在界面 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) # 首先生成graphvis所需的dot数据 dot_data = tree.export_graphviz(clf, # 已经训练的模型 out_file=None, # dot文件输出名称，默认tree.dot feature_names=iris.feature_names, # 特征变量名称 class_names=iris.target_names, # 目标变量名称 filled=False, # 颜色是否填充，默认False-不填充 rounded=True, # 字体设置，默认False special_characters=False # postgript对特殊字符处理，默认false ) # 将dot数据通过graphviz渲染 graph = graphviz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
                 <h3 class="media-heading">数据处理-简单模型与绘图-01</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+                <h3 class="media-heading">数据处理-气象数据-01 </h3>
               </a>
               <span class="media-meta">
                 <span class="media-date text-small">
@@ -352,23 +499,6 @@
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
-                <h3 class="media-heading">数据处理-气象数据-01 </h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 0001
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p></p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -376,7 +506,7 @@
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         3 posts found
+         5 posts found
       </p>
     </div>
   </div>
@@ -384,7 +514,7 @@
     
   
     
-    <div id="cover" style="background-image:url('https://growing-bison.github.io/xiaoyeniu.github.io/images/2.jpg');"></div>
+    <div id="cover" style="background-image:url('https://growing-bison.github.io/xiaoyeniu.github.io/images/2_1.jpg');"></div>
   
 
 

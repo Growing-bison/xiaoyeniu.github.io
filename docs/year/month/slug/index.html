@@ -20,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.40.3 with theme Tranquilpeak 0.4.3-BETA">
-    <title>数据处理-气象数据-01 </title>
+    <title>机器学习-决策树-可视化01 </title>
     <meta name="author" content="Jack Lu">
     <meta name="keywords" content="">
 
@@ -28,15 +28,21 @@
     
 
     
-    <meta name="description" content="">
-    <meta property="og:description" content="">
+    <meta name="description" content="决策树结果的可视化-python 一、对于sklearn中的tree模型可视化 1、图形结果输出pdf保存本地；
+2、图形结果显示在界面
+1、图形结果输出pdf保存本地 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) dot_data = tree.export_graphviz(clf, out_file=None) graph = graphviz.Source(dot_data) graph.render(&quot;保存的名字&quot;)  2、图形结果显示在界面 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) # 首先生成graphvis所需的dot数据 dot_data = tree.export_graphviz(clf, # 已经训练的模型 out_file=None, # dot文件输出名称，默认tree.dot feature_names=iris.feature_names, # 特征变量名称 class_names=iris.target_names, # 目标变量名称 filled=False, # 颜色是否填充，默认False-不填充 rounded=True, # 字体设置，默认False special_characters=False # postgript对特殊字符处理，默认false ) # 将dot数据通过graphviz渲染 graph = graphviz.">
+    <meta property="og:description" content="决策树结果的可视化-python 一、对于sklearn中的tree模型可视化 1、图形结果输出pdf保存本地；
+2、图形结果显示在界面
+1、图形结果输出pdf保存本地 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) dot_data = tree.export_graphviz(clf, out_file=None) graph = graphviz.Source(dot_data) graph.render(&quot;保存的名字&quot;)  2、图形结果显示在界面 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) # 首先生成graphvis所需的dot数据 dot_data = tree.export_graphviz(clf, # 已经训练的模型 out_file=None, # dot文件输出名称，默认tree.dot feature_names=iris.feature_names, # 特征变量名称 class_names=iris.target_names, # 目标变量名称 filled=False, # 颜色是否填充，默认False-不填充 rounded=True, # 字体设置，默认False special_characters=False # postgript对特殊字符处理，默认false ) # 将dot数据通过graphviz渲染 graph = graphviz.">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="数据处理-气象数据-01 ">
+    <meta property="og:title" content="机器学习-决策树-可视化01 ">
     <meta property="og:url" content="/year/month/slug/">
     <meta property="og:site_name" content="云中野餐">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="云中野餐">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:description" content="决策树结果的可视化-python 一、对于sklearn中的tree模型可视化 1、图形结果输出pdf保存本地；
+2、图形结果显示在界面
+1、图形结果输出pdf保存本地 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) dot_data = tree.export_graphviz(clf, out_file=None) graph = graphviz.Source(dot_data) graph.render(&quot;保存的名字&quot;)  2、图形结果显示在界面 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) # 首先生成graphvis所需的dot数据 dot_data = tree.export_graphviz(clf, # 已经训练的模型 out_file=None, # dot文件输出名称，默认tree.dot feature_names=iris.feature_names, # 特征变量名称 class_names=iris.target_names, # 目标变量名称 filled=False, # 颜色是否填充，默认False-不填充 rounded=True, # 字体设置，默认False special_characters=False # postgript对特殊字符处理，默认false ) # 将dot数据通过graphviz渲染 graph = graphviz.">
     
     
 
@@ -211,15 +217,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      数据处理-气象数据-01 
+      机器学习-决策树-可视化01 
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="0001-01-01T00:00:00Z">
+      <time itemprop="datePublished" datetime="2018-05-12T20:16:59&#43;08:00">
         
-  January 1, 1
+  May 12, 2018
 
       </time>
     
@@ -230,194 +236,144 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p></p>
+              
 
-<h1 id="一-大体背景介绍">一、大体背景介绍</h1>
+<h2 id="center-决策树结果的可视化-python"><center>决策树结果的可视化-python</h2>
 
-<p>由于直接观测数据难以覆盖全面，希望能补充部分数据源，现需对开放的再分析数据进行简单分析。
-- 提取
-需求目标：从某种再分析数据源当中提取全国气象自动监测站点的数据，获取相应站点日数据。
-涉及到几个气象要素：日均气温、日降水、日相对湿度、日辐射、日风速、日最大气温、日最小气温等七个要素。</p>
+<h3 id="一-对于sklearn中的tree模型可视化">一、对于sklearn中的tree模型可视化</h3>
 
-<ul>
-<li><p>已有资源及数据情况：<br />
-数据源：格式-nc文件，空间分辨率0.125°的网格，时间分辨率小于24小时，时间跨度10年，总文件大小60G左右</p></li>
+<p>1、图形结果输出pdf保存本地；<br />
+2、图形结果显示在界面</p>
 
-<li><p>处理分析
-将再分析数据与观测站的数据进行比较，采用均方根误差RMSE作为指标，以月均值为主要对象，区域范围包括中国。</p></li>
-</ul>
+<h4 id="1-图形结果输出pdf保存本地">1、图形结果输出pdf保存本地</h4>
 
-<h1 id="二-数据提取-处理">二、数据提取、处理、</h1>
+<pre><code class="language-python">from sklearn.datasets import load_iris
+import graphviz 
+from sklearn import tree
 
-<p>提取的前提是对数据源的了解，明确单位、精度、气象要素的正常值范围等。
-准备的文件：全国主要观测站点的经纬度坐标，格式csv/txt等。</p>
-
-<p>大体的流程图如下：</p>
-
-<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/flow1.png" alt="alt text" /></p>
-
-<h1 id="2-1-提取的代码块1">2.1 提取的代码块1</h1>
-
-<p>简单提取程序脚本如下图：</p>
-
-<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/py1.PNG" alt="alt text" /></p>
-
-<h1 id="2-2-异常值和缺失值的代码块1">2.2 异常值和缺失值的代码块1</h1>
-
-<p>异常与缺失处理：</p>
-
-<pre><code>{python}
-# find missing value &amp;&amp; put NaN
-missing = df.ix[(df[df.columns[7]] == 32766)]
-#print('########temperature missing########')
-for index, row in missing.iterrows():
-    #print(row[0], row[4], row[5], row[6], row[7])
-    print(index)
-df[df == 32766] = np.nan
-# get temperature
-tmp = df[df.columns[7]] * 0.1
+iris = load_iris()
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(iris.data, iris.target)
+dot_data = tree.export_graphviz(clf, out_file=None) 
+graph = graphviz.Source(dot_data) 
+graph.render(&quot;保存的名字&quot;)
 </code></pre>
 
-<h1 id="2-3-要素转换的代码块1">2.3 要素转换的代码块1</h1>
+<h4 id="2-图形结果显示在界面">2、图形结果显示在界面</h4>
 
-<p>主要是对将辐射转成日照时长。</p>
+<pre><code class="language-python">from sklearn.datasets import load_iris
+import graphviz 
+from sklearn import tree
 
-<pre><code>{python}
-def dursun(lat_deg, dt):
+iris = load_iris()
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(iris.data, iris.target)
+
+# 首先生成graphvis所需的dot数据
+dot_data = tree.export_graphviz(clf, # 已经训练的模型
+                                out_file=None, # dot文件输出名称，默认tree.dot
+                                 feature_names=iris.feature_names,  # 特征变量名称
+                                 class_names=iris.target_names,  # 目标变量名称
+                                 filled=False, # 颜色是否填充，默认False-不填充
+                                rounded=True,  # 字体设置，默认False
+                                 special_characters=False  # postgript对特殊字符处理，默认false
+                               )  
+
+# 将dot数据通过graphviz渲染
+graph = graphviz.Source(dot_data)
+
+# 界面上直接显示
+graph
+
+# 将图表保存本地为pdf（默认即为pdf）。？？如何保存为png
+graph.render('new2')
+</code></pre>
+
+<pre><code>'new2.pdf'
+</code></pre>
+
+<h3 id="二-对于xgboost的训练结果">二、对于xgboost的训练结果。</h3>
+
+<p>1、tree图形结果输出pdf保存本地；<br />
+2、tree图形结果显示在界面；<br />
+3、特征的重要性可视化。<br />
+　　tree结果可以采用两种方式，①xgboost包中的plot_tree函数、②借助xgboost的to_graghviz和graphviz包<br />
+　　特征重要新可视化，两种方式①xgboost包中的plot_importance函数、②自定义函数</p>
+
+<h4 id="1-tree图形结果可视化①">1、tree图形结果可视化①</h4>
+
+<blockquote>
+<p>from xgboost import plot_tree<br />
+plot_tree(my_module)  my_module  # 已经fit</p>
+</blockquote>
+
+<h4 id="1-tree图形结果可视化②">1、tree图形结果可视化②</h4>
+
+<pre><code class="language-python">from xgboost import to_graphviz
+import graphviz
+
+# my_module  # 已经fit
+dot_data = to_graphviz(my_module)
+graph = graphviz.Source(dot_data) 
+
+# 显示在桌面
+graph
+
+# 保存到本地
+graph.render('new2')
+</code></pre>
+
+<h4 id="2-特征重要新可视化①">2、特征重要新可视化①</h4>
+
+<blockquote>
+<p>from xgboost import plot_importance<br />
+plot_importance(booster=my_module, importance_type=&lsquo;weight&rsquo;)  # my_module  # 已经fit</p>
+</blockquote>
+
+<h4 id="2-特征重要新可视化②">2、特征重要新可视化②</h4>
+
+<pre><code class="language-python">def modelfit(alg, dtrain, predictors, performCV=True, printFeatureImportance=True, cv_folds=5):
+    '''
+    该函数方法借鉴tune parameter...大神的，改写而来
+    alg: 模型
+    dtrain: pd.DataFrame,包含训练特征和目标特征
+    predictors: list，包含训练特征的名称
+    performCV: 按默认
+    printFeatureImportance: 按默认
+    '''
     
-    t = 24.0/pi*(acos(-tan(lat_rad)*tan(theta)))
-    return t
-
-def Ra():
-
-    Ra = 24 * 60 * Gsc * dr * ( (ws * sin(lat_rad) * sin(delta)) + ( cos(lat_rad) * cos(delta) * sin(ws))) / pi
-    return Ra
-
+    #Fit the algorithm on the data
+    alg.fit(dtrain[predictors], dtrain['Survived'])
+        
+    #Predict training set:
+    dtrain_predictions = alg.predict(dtrain[predictors])
+    dtrain_predprob = alg.predict_proba(dtrain[predictors])[:,1]
+    
+    #Perform cross-validation:
+    if performCV:
+        cv_score = cross_validation.cross_val_score(alg, dtrain[predictors], dtrain['Survived'], cv=cv_folds, scoring='roc_auc')
+    
+    #Print model report:
+    print (&quot;\nModel Report&quot;)
+    print (&quot;Accuracy : %.4g&quot; % metrics.accuracy_score(dtrain['Survived'].values, dtrain_predictions))
+    print (&quot;AUC Score (Train): %f&quot; % metrics.roc_auc_score(dtrain['Survived'], dtrain_predprob))
+    
+    if performCV:
+        print (&quot;CV Score : Mean - %.7g | Std - %.7g | Min - %.7g | Max - %.7g&quot; % (np.mean(cv_score),np.std(cv_score),np.min(cv_score),np.max(cv_score)))
+        
+    #Print Feature Importance:
+    if printFeatureImportance:
+        feat_imp = pd.Series(alg.feature_importances_, predictors).sort_values(ascending=False)
+        feat_imp.plot(kind='bar', title='Feature Importances')
+        plt.ylabel('Feature Importance Score')
 </code></pre>
 
-<h1 id="2-4-数据提取结果">2.4 数据提取结果</h1>
+<p>参考:<br />
+1. How to Visualize Gradient Boosting Decision Trees With XGBoost in Python <a href="https://machinelearningmastery.com/visualize-gradient-boosting-decision-trees-xgboost-python/">https://machinelearningmastery.com/visualize-gradient-boosting-decision-trees-xgboost-python/</a>
+2. graphviz官方 <a href="https://pypi.org/project/graphviz/">https://pypi.org/project/graphviz/</a>
+3.  XGBoost Plotting API以及GBDT组合特征实践 <a href="https://blog.csdn.net/sb19931201/article/details/65445514">https://blog.csdn.net/sb19931201/article/details/65445514</a>
+4. sklearn官方 <a href="http://scikit-learn.org/stable/modules/tree.html#tree">http://scikit-learn.org/stable/modules/tree.html#tree</a></p>
 
-<p>考虑存在csv格式文件，文件数量=7个气象要素×194个站点，大小200多Mb。</p>
-
-<p><center> <img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/file1.PNG" alt="再分析数据提取结果" /></p>
-
-<h1 id="三-数据分析">三、数据分析</h1>
-
-<p>准备的数据：<br />
-1. 约200个站点的再分析日值数据（即从nc文件中提取出来，并清洗、转换好）；<br />
-2. 约200个站点的观测站日值数据。<br />
-3. 全国观测站点的经纬度坐标信息。</p>
-
-<p>上述数据均保存在csv文件当中，统一保存的编码格式。</p>
-
-<p>比较累年月值（12个月），月值（某年某月），累年值（某年）等的再分析数据对比观测站数据的误差情况。</p>
-
-<p>数据组织与流向如下图：</p>
-
-<table>
-<thead>
-<tr>
-<th>源</th>
-<th>要素（温度、湿度等）</th>
-<th>时间分辨率</th>
-<th>文件数量及大小</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>再分析</td>
-<td>&hellip;</td>
-<td>10年日值</td>
-<td>1300个左右，200-300M</td>
-</tr>
-
-<tr>
-<td>观测站</td>
-<td>&hellip;</td>
-<td>10年日值</td>
-<td>194个，100M左右</td>
-</tr>
-</tbody>
-</table>
-
-<h1 id="3-1-文件与数据管理">3.1 文件与数据管理</h1>
-
-<p>数据组织变化涉及几个步骤，以其中一个要素分析为例说明如下：</p>
-
-<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/file_struction.png" alt="alt text" /></p>
-
-<h1 id="3-2-数据分析处理与输出">3.2 数据分析处理与输出</h1>
-
-<pre><code>{python}
-
-CMA_datasource_dir = '/media/dira/'
-station_194_dir = '/media/latlon.csv'
-df = pd.read_csv(station_194_dir, header=0, sep=',')
-star_time = datetime(2004, 1, 1).strftime('%Y-%m-%d')
-end_time = datetime(2016, 7, 31).strftime('%Y-%m-%d')
-
-# 2、读入194个CMA观测数据
-val_3 = os.popen(&quot;find /media/dir2 -name '%s*'&quot; \
-                 % (stid)).read()
-#年份、月份提取
-obs_vlu_m = grouped_by_month.mean()
-</code></pre>
-
-<h1 id="3-4-数据分析处理与输出">3.4 数据分析处理与输出</h1>
-
-<p>对应累积年值的计算结果,包含194个站点1-12个月的对应RSEM、相关系数等。</p>
-
-<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/file3.PNG" alt="alt text" /></p>
-
-<h1 id="四-数据观测与图表绘制">四、数据观测与图表绘制</h1>
-
-<h3 id="1-观测多个站点在不同时间尺度上的误差分布-误差分布与海拔高度间关系">1. 观测多个站点在不同时间尺度上的误差分布，误差分布与海拔高度间关系。</h3>
-
-<h3 id="2-空间分布上不同站点的情况">2. 空间分布上不同站点的情况。</h3>
-
-<h3 id="准备的数据"><strong>准备的数据：</strong></h3>
-
-<ol>
-<li><p>某个要素的约200个站点的误差及相关系数数据</p></li>
-
-<li><p>工具平台：R、GIS、python</p></li>
-</ol>
-
-<h1 id="4-1-简单频次分布图">4.1 简单频次分布图</h1>
-
-<p>对数据中的RSME绘制简单的分布图</p>
-
-<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/Daily_h.png" alt="简单分布图" /></p>
-
-<h1 id="4-2-时间序列分布图">4.2 时间序列分布图</h1>
-
-<p>多个站点的月值图
-<img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/month_help_value.png" alt="多个站点累积月值" /></p>
-
-<h1 id="4-3-空间分布图">4.3 空间分布图</h1>
-
-<p>在python上简单绘制的结果
-<img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/map_py.png" alt="py绘制的map" /></p>
-
-<hr />
-
-<p>借助GIS绘制的结果
-<img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/map_gis.png" alt="gis绘制的map" /></p>
-
-<h1 id="4-4-简单结论">4.4 简单结论</h1>
-
-<p>1.　温度日值、月值的准确性较高，整体上和观测值基本相符，在具体应用时需区分不同地区</p>
-
-<p>2.　准确性较低的区域原因：
-  +  受复杂地形等因素所影响
-  +  另一方面可能是观测数据本身站点少、观测质量</p>
-
-<h1 id="五-小案例线性回归">五、小案例线性回归</h1>
-
-<p>如何在已有数据基础之上，筛除异常值，并得到最终拟合曲线</p>
-
-<p><a href="https://growing-bison.github.io/xiaoyeniu.github.io/img/guides/guide_x/for_404.html">线性回归拟合-示例</a></p>
               
             </div>
           </div>
@@ -429,11 +385,11 @@ obs_vlu_m = grouped_by_month.mean()
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/r/">R</a>
+  <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/python/">python</a>
 
-  <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a>
+  <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
 
-  <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E7%BB%98%E5%9B%BE/">绘图</a>
+  <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a>
 
                   </div>
                 
@@ -446,7 +402,7 @@ obs_vlu_m = grouped_by_month.mean()
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="关于python自定义包">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="机器学习-xgboost-调参01 ">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -454,7 +410,7 @@ obs_vlu_m = grouped_by_month.mean()
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="数据处理-简单模型与绘图-01">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -532,7 +488,7 @@ obs_vlu_m = grouped_by_month.mean()
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="关于python自定义包">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="机器学习-xgboost-调参01 ">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -540,7 +496,7 @@ obs_vlu_m = grouped_by_month.mean()
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="数据处理-简单模型与绘图-01">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -674,7 +630,60 @@ obs_vlu_m = grouped_by_month.mean()
             
             <div class="media-body">
               <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+                <h3 class="media-heading">机器学习-xgboost-调参01 </h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">#Import libraries: import pandas as pd import numpy as np from sklearn.ensemble import GradientBoostingClassifier #GBM algorithm from sklearn import cross_validation, metrics #Additional scklearn functions from sklearn.grid_search import GridSearchCV #Perforing grid search import matplotlib.pylab as plt %matplotlib inline from matplotlib.pylab import rcParams rcParams['figure.figsize'] = 12, 4 # train = pd.read_csv(r'.\xgboost\datasource\learn1_tune_parameter\Dataset', encoding='utf-8') train = pd.read_csv(r'D:\TEST\jupyter\xgboost\datasource\learn1_tune_parameter\Dataset\Train_nyOWmfK.csv',encoding='utf-8') target = 'Disbursed' IDcol = 'ID'  C:\Users\M4500\Anaconda3\envs\py35_xgboost\lib\site-packages\sklearn\cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+                <h3 class="media-heading">机器学习-决策树-可视化01 </h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">决策树结果的可视化-python 一、对于sklearn中的tree模型可视化 1、图形结果输出pdf保存本地；
+2、图形结果显示在界面
+1、图形结果输出pdf保存本地 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) dot_data = tree.export_graphviz(clf, out_file=None) graph = graphviz.Source(dot_data) graph.render(&quot;保存的名字&quot;)  2、图形结果显示在界面 from sklearn.datasets import load_iris import graphviz from sklearn import tree iris = load_iris() clf = tree.DecisionTreeClassifier() clf = clf.fit(iris.data, iris.target) # 首先生成graphvis所需的dot数据 dot_data = tree.export_graphviz(clf, # 已经训练的模型 out_file=None, # dot文件输出名称，默认tree.dot feature_names=iris.feature_names, # 特征变量名称 class_names=iris.target_names, # 目标变量名称 filled=False, # 颜色是否填充，默认False-不填充 rounded=True, # 字体设置，默认False special_characters=False # postgript对特殊字符处理，默认false ) # 将dot数据通过graphviz渲染 graph = graphviz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
                 <h3 class="media-heading">数据处理-简单模型与绘图-01</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+                <h3 class="media-heading">数据处理-气象数据-01 </h3>
               </a>
               <span class="media-meta">
                 <span class="media-date text-small">
@@ -705,23 +714,6 @@ obs_vlu_m = grouped_by_month.mean()
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
-                <h3 class="media-heading">数据处理-气象数据-01 </h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 0001
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p></p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -729,7 +721,7 @@ obs_vlu_m = grouped_by_month.mean()
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         3 posts found
+         5 posts found
       </p>
     </div>
   </div>
@@ -737,7 +729,7 @@ obs_vlu_m = grouped_by_month.mean()
     
   
     
-    <div id="cover" style="background-image:url('https://growing-bison.github.io/xiaoyeniu.github.io/images/2.jpg');"></div>
+    <div id="cover" style="background-image:url('https://growing-bison.github.io/xiaoyeniu.github.io/images/2_1.jpg');"></div>
   
 
 

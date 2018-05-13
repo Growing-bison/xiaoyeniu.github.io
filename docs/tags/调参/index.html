@@ -16,21 +16,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.40.3 with theme Tranquilpeak 0.4.3-BETA">
-    <title>R</title>
+    <title>调参</title>
     <meta name="author" content="Jack Lu">
     <meta name="keywords" content="">
 
     <link rel="icon" href="https://growing-bison.github.io/xiaoyeniu.github.io/favicon.png">
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/r/index.xml">
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E8%B0%83%E5%8F%82/index.xml">
     
 
     
     <meta name="description" content="奔腾在原野，回首不见">
     <meta property="og:description" content="奔腾在原野，回首不见">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="R">
-    <meta property="og:url" content="/tags/r/">
+    <meta property="og:title" content="调参">
+    <meta property="og:url" content="/tags/%E8%B0%83%E5%8F%82/">
     <meta property="og:site_name" content="云中野餐">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="云中野餐">
@@ -227,15 +227,15 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
-          数据处理-简单模型与绘图-01
+          机器学习-xgboost-调参01 
         </a>
       </h1>
       
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-05-10T16:16:59&#43;08:00">
+      <time itemprop="datePublished" datetime="2018-05-12T20:16:59&#43;08:00">
         
-  May 10, 2018
+  May 12, 2018
 
       </time>
     
@@ -244,53 +244,7 @@
 
     </div>
     <div class="postShorten-excerpt" itemprop="articleBody">
-      <p></p>
-      <p>
-        <a href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" class="postShorten-excerpt_link link">Continue reading</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-            
-              
-  
-    
-      
-        
-      
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
-          数据处理-气象数据-01 
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2018-05-09T16:16:59&#43;08:00">
-        
-  May 9, 2018
-
-      </time>
-    
-    
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p></p>
+      #Import libraries: import pandas as pd import numpy as np from sklearn.ensemble import GradientBoostingClassifier #GBM algorithm from sklearn import cross_validation, metrics #Additional scklearn functions from sklearn.grid_search import GridSearchCV #Perforing grid search import matplotlib.pylab as plt %matplotlib inline from matplotlib.pylab import rcParams rcParams['figure.figsize'] = 12, 4 # train = pd.read_csv(r'.\xgboost\datasource\learn1_tune_parameter\Dataset', encoding='utf-8') train = pd.read_csv(r'D:\TEST\jupyter\xgboost\datasource\learn1_tune_parameter\Dataset\Train_nyOWmfK.csv',encoding='utf-8') target = 'Disbursed' IDcol = 'ID'  C:\Users\M4500\Anaconda3\envs\py35_xgboost\lib\site-packages\sklearn\cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved.
       <p>
         <a href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" class="postShorten-excerpt_link link">Continue reading</a>
         
