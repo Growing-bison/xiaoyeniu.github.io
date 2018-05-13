@@ -1,0 +1,811 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.40.3 with theme Tranquilpeak 0.4.3-BETA">
+    <title>数据处理-气象数据-01 </title>
+    <meta name="author" content="Jack Lu">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="https://growing-bison.github.io/xiaoyeniu.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="这是关于气象数据从nc到csv处理结果，并展示的过程。
+
+">
+    <meta property="og:description" content="这是关于气象数据从nc到csv处理结果，并展示的过程。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="数据处理-气象数据-01 ">
+    <meta property="og:url" content="/year/month/slug/">
+    <meta property="og:site_name" content="云中野餐">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="云中野餐">
+    <meta name="twitter:description" content="这是关于气象数据从nc到csv处理结果，并展示的过程。
+
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://avatars1.githubusercontent.com/u/36290593?s=400&u=9e2a9f2d9988ad4500ce0ca140c7477bb305525e&v=4">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://growing-bison.github.io/xiaoyeniu.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://growing-bison.github.io/xiaoyeniu.github.io/">云中野餐</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://growing-bison.github.io/xiaoyeniu.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://avatars1.githubusercontent.com/u/36290593?s=400&amp;u=9e2a9f2d9988ad4500ce0ca140c7477bb305525e&amp;v=4" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://growing-bison.github.io/xiaoyeniu.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://avatars1.githubusercontent.com/u/36290593?s=400&amp;u=9e2a9f2d9988ad4500ce0ca140c7477bb305525e&amp;v=4" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Jack Lu</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>世界很美好，许多的未知，探索前行</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://growing-bison.github.io/xiaoyeniu.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://growing-bison.github.io/xiaoyeniu.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://growing-bison.github.io/xiaoyeniu.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://growing-bison.github.io/xiaoyeniu.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://growing-bison.github.io/xiaoyeniu.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Growing-bison" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://stackoverflow.com/users/9358184/jack-lu" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://growing-bison.github.io/xiaoyeniu.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      数据处理-气象数据-01 
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-01-09T16:16:59&#43;08:00">
+        
+  January 9, 2018
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>这是关于气象数据从nc到csv处理结果，并展示的过程。</p>
+
+<p></p>
+
+<h1 id="一-大体背景介绍">一、大体背景介绍</h1>
+
+<p>由于直接观测数据难以覆盖全面，希望能补充部分数据源，现需对开放的再分析数据进行简单分析。
+- 提取
+需求目标：从某种再分析数据源当中提取全国气象自动监测站点的数据，获取相应站点日数据。
+涉及到几个气象要素：日均气温、日降水、日相对湿度、日辐射、日风速、日最大气温、日最小气温等七个要素。</p>
+
+<ul>
+<li><p>已有资源及数据情况：<br />
+数据源：格式-nc文件，空间分辨率0.125°的网格，时间分辨率小于24小时，时间跨度10年，总文件大小60G左右</p></li>
+
+<li><p>处理分析
+将再分析数据与观测站的数据进行比较，采用均方根误差RMSE作为指标，以月均值为主要对象，区域范围包括中国。</p></li>
+</ul>
+
+<h1 id="二-数据提取-处理">二、数据提取、处理、</h1>
+
+<p>提取的前提是对数据源的了解，明确单位、精度、气象要素的正常值范围等。
+准备的文件：全国主要观测站点的经纬度坐标，格式csv/txt等。</p>
+
+<p>大体的流程图如下：</p>
+
+<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/flow1.png" alt="alt text" /></p>
+
+<h1 id="2-1-提取的代码块1">2.1 提取的代码块1</h1>
+
+<p>简单提取程序脚本如下图：</p>
+
+<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/py1.PNG" alt="alt text" /></p>
+
+<h1 id="2-2-异常值和缺失值的代码块1">2.2 异常值和缺失值的代码块1</h1>
+
+<p>异常与缺失处理：</p>
+
+<pre><code>{python}
+# find missing value &amp;&amp; put NaN
+missing = df.ix[(df[df.columns[7]] == 32766)]
+#print('########temperature missing########')
+for index, row in missing.iterrows():
+    #print(row[0], row[4], row[5], row[6], row[7])
+    print(index)
+df[df == 32766] = np.nan
+# get temperature
+tmp = df[df.columns[7]] * 0.1
+</code></pre>
+
+<h1 id="2-3-要素转换的代码块1">2.3 要素转换的代码块1</h1>
+
+<p>主要是对将辐射转成日照时长。</p>
+
+<pre><code>{python}
+def dursun(lat_deg, dt):
+    
+    t = 24.0/pi*(acos(-tan(lat_rad)*tan(theta)))
+    return t
+
+def Ra():
+
+    Ra = 24 * 60 * Gsc * dr * ( (ws * sin(lat_rad) * sin(delta)) + ( cos(lat_rad) * cos(delta) * sin(ws))) / pi
+    return Ra
+
+</code></pre>
+
+<h1 id="2-4-数据提取结果">2.4 数据提取结果</h1>
+
+<p>考虑存在csv格式文件，文件数量=7个气象要素×194个站点，大小200多Mb。</p>
+
+<p><center> <img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/file1.PNG" alt="再分析数据提取结果" /></p>
+
+<h1 id="三-数据分析">三、数据分析</h1>
+
+<p>准备的数据：<br />
+1. 约200个站点的再分析日值数据（即从nc文件中提取出来，并清洗、转换好）；<br />
+2. 约200个站点的观测站日值数据。<br />
+3. 全国观测站点的经纬度坐标信息。</p>
+
+<p>上述数据均保存在csv文件当中，统一保存的编码格式。</p>
+
+<p>比较累年月值（12个月），月值（某年某月），累年值（某年）等的再分析数据对比观测站数据的误差情况。</p>
+
+<p>数据组织与流向如下图：</p>
+
+<table>
+<thead>
+<tr>
+<th>源</th>
+<th>要素（温度、湿度等）</th>
+<th>时间分辨率</th>
+<th>文件数量及大小</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>再分析</td>
+<td>&hellip;</td>
+<td>10年日值</td>
+<td>1300个左右，200-300M</td>
+</tr>
+
+<tr>
+<td>观测站</td>
+<td>&hellip;</td>
+<td>10年日值</td>
+<td>194个，100M左右</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="3-1-文件与数据管理">3.1 文件与数据管理</h1>
+
+<p>数据组织变化涉及几个步骤，以其中一个要素分析为例说明如下：</p>
+
+<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/file_struction.png" alt="alt text" /></p>
+
+<h1 id="3-2-数据分析处理与输出">3.2 数据分析处理与输出</h1>
+
+<pre><code>{python}
+
+CMA_datasource_dir = '/media/dira/'
+station_194_dir = '/media/latlon.csv'
+df = pd.read_csv(station_194_dir, header=0, sep=',')
+star_time = datetime(2004, 1, 1).strftime('%Y-%m-%d')
+end_time = datetime(2016, 7, 31).strftime('%Y-%m-%d')
+
+# 2、读入194个CMA观测数据
+val_3 = os.popen(&quot;find /media/dir2 -name '%s*'&quot; \
+                 % (stid)).read()
+#年份、月份提取
+obs_vlu_m = grouped_by_month.mean()
+</code></pre>
+
+<h1 id="3-4-数据分析处理与输出">3.4 数据分析处理与输出</h1>
+
+<p>对应累积年值的计算结果,包含194个站点1-12个月的对应RSEM、相关系数等。</p>
+
+<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/file3.PNG" alt="alt text" /></p>
+
+<h1 id="四-数据观测与图表绘制">四、数据观测与图表绘制</h1>
+
+<h3 id="1-观测多个站点在不同时间尺度上的误差分布-误差分布与海拔高度间关系">1. 观测多个站点在不同时间尺度上的误差分布，误差分布与海拔高度间关系。</h3>
+
+<h3 id="2-空间分布上不同站点的情况">2. 空间分布上不同站点的情况。</h3>
+
+<h3 id="准备的数据"><strong>准备的数据：</strong></h3>
+
+<ol>
+<li><p>某个要素的约200个站点的误差及相关系数数据</p></li>
+
+<li><p>工具平台：R、GIS、python</p></li>
+</ol>
+
+<h1 id="4-1-简单频次分布图">4.1 简单频次分布图</h1>
+
+<p>对数据中的RSME绘制简单的分布图</p>
+
+<p><img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/Daily_h.png" alt="简单分布图" /></p>
+
+<h1 id="4-2-时间序列分布图">4.2 时间序列分布图</h1>
+
+<p>多个站点的月值图
+<img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/month_help_value.png" alt="多个站点累积月值" /></p>
+
+<h1 id="4-3-空间分布图">4.3 空间分布图</h1>
+
+<p>在python上简单绘制的结果
+<img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/map_py.png" alt="py绘制的map" /></p>
+
+<hr />
+
+<p>借助GIS绘制的结果
+<img src="https://growing-bison.github.io/xiaoyeniu.github.io/img/figure_m2/map_gis.png" alt="gis绘制的map" /></p>
+
+<h1 id="4-4-简单结论">4.4 简单结论</h1>
+
+<p>1.　温度日值、月值的准确性较高，整体上和观测值基本相符，在具体应用时需区分不同地区</p>
+
+<p>2.　准确性较低的区域原因：
+  +  受复杂地形等因素所影响
+  +  另一方面可能是观测数据本身站点少、观测质量</p>
+
+<h1 id="五-小案例线性回归">五、小案例线性回归</h1>
+
+<p>如何在已有数据基础之上，筛除异常值，并得到最终拟合曲线</p>
+
+<p><a href="https://growing-bison.github.io/xiaoyeniu.github.io/img/guides/guide_x/for_404.html">线性回归拟合-示例</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/r/">R</a>
+
+  <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a>
+
+  <a class="tag tag--primary tag--small" href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E7%BB%98%E5%9B%BE/">绘图</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="关于python自定义包">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https//www.facebook.com/sharer/sharer.php?u=https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https//twitter.com/intent/tweet?text=https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https//plus.google.com/share?url=https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Jack Lu. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/" data-tooltip="关于python自定义包">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https//www.facebook.com/sharer/sharer.php?u=https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https//twitter.com/intent/tweet?text=https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https//plus.google.com/share?url=https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgrowing-bison.github.io%2Fxiaoyeniu.github.io%2Fyear%2Fmonth%2Fslug%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https//twitter.com/intent/tweet?text=https%3A%2F%2Fgrowing-bison.github.io%2Fxiaoyeniu.github.io%2Fyear%2Fmonth%2Fslug%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https//plus.google.com/share?url=https%3A%2F%2Fgrowing-bison.github.io%2Fxiaoyeniu.github.io%2Fyear%2Fmonth%2Fslug%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://avatars1.githubusercontent.com/u/36290593?s=400&amp;u=9e2a9f2d9988ad4500ce0ca140c7477bb305525e&amp;v=4" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Jack Lu</h4>
+    
+      <div id="about-card-bio"><strong>世界很美好，许多的未知，探索前行</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Data Analyst&amp;Mining
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Beijing,China
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+                <h3 class="media-heading">数据处理-简单模型与绘图-01</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>&ldquo;作为和师弟师妹简单介绍的文章，主要是有关线性回归建模与图形绘制&rdquo;
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+                <h3 class="media-heading">关于python自定义包</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是关于如何建立python的自定义包的简单笔记，供简单参考。
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/">
+                <h3 class="media-heading">数据处理-气象数据-01 </h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是关于气象数据从nc到csv处理结果，并展示的过程。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         3 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://growing-bison.github.io/xiaoyeniu.github.io/images/3.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://growing-bison.github.io/xiaoyeniu.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/growing-bison.github.io\/xiaoyeniu.github.io\/year\/month\/slug\/';
+          
+            this.page.identifier = '\/year\/month\/slug\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = '云中野牛';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
