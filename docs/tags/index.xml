@@ -1,107 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 云中野餐</title>
-    <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/</link>
-    <description>Recent content in Tags on 云中野餐</description>
+    <title>Tags on My New Hugo Site</title>
+    <link>https://growing-bison.github.io/xiaoyeniu.github.io/tags/</link>
+    <description>Recent content in Tags on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 12 May 2018 18:16:59 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 09 Feb 2018 16:16:59 +0800</lastBuildDate>
     
-	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github..io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://growing-bison.github.io/xiaoyeniu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Python</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/python/</link>
-<<<<<<< HEAD
+      <link>https://growing-bison.github.io/xiaoyeniu.github.io/tags/python/</link>
       <pubDate>Fri, 09 Feb 2018 16:16:59 +0800</pubDate>
-=======
-      <pubDate>Sat, 12 May 2018 18:16:59 +0800</pubDate>
->>>>>>> e81672b227f2a72c4a2a0618d7d81f6c69222318
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/r/</link>
-      <pubDate>Thu, 10 May 2018 16:16:59 +0800</pubDate>
-      
-      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/r/</guid>
-<<<<<<< HEAD
-=======
-      <description></description>
-    </item>
-    
-    <item>
-      <title>可视化</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</link>
-      <pubDate>Sat, 12 May 2018 18:16:59 +0800</pubDate>
-      
-      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</guid>
->>>>>>> e81672b227f2a72c4a2a0618d7d81f6c69222318
-      <description></description>
-    </item>
-    
-    <item>
-      <title>数据处理</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</link>
-<<<<<<< HEAD
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</guid>
-=======
-      <pubDate>Wed, 09 May 2018 16:16:59 +0800</pubDate>
-      
-      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>机器学习</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
-      <pubDate>Sat, 12 May 2018 18:16:59 +0800</pubDate>
-      
-      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
->>>>>>> e81672b227f2a72c4a2a0618d7d81f6c69222318
+      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>模式匹配</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/</link>
+      <link>https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/</link>
       <pubDate>Fri, 09 Feb 2018 16:16:59 +0800</pubDate>
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>线性回归</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</link>
-      <pubDate>Thu, 10 May 2018 16:16:59 +0800</pubDate>
-      
-      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>绘图</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E7%BB%98%E5%9B%BE/</link>
-      <pubDate>Thu, 10 May 2018 16:16:59 +0800</pubDate>
-      
-      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E7%BB%98%E5%9B%BE/</guid>
+      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/</guid>
       <description></description>
     </item>
     
     <item>
       <title>自定义包</title>
-      <link>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8C%85/</link>
+      <link>https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8C%85/</link>
       <pubDate>Fri, 09 Feb 2018 16:16:59 +0800</pubDate>
       
-      <guid>https://growing-bison.github.io/xiaoyeniu.github..io/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8C%85/</guid>
+      <guid>https://growing-bison.github.io/xiaoyeniu.github.io/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8C%85/</guid>
       <description></description>
     </item>
     
