@@ -17,7 +17,8 @@
       <pubDate>Thu, 10 May 2018 16:16:59 +0800</pubDate>
       
       <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&amp;ldquo;作为和师弟师妹简单介绍的文章，主要是有关线性回归建模与图形绘制&amp;rdquo;
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -26,7 +27,9 @@
       <pubDate>Wed, 09 May 2018 16:16:59 +0800</pubDate>
       
       <guid>https://growing-bison.github.io/xiaoyeniu.github.io/year/month/slug/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;这是关于气象数据从nc到csv处理结果，并展示的过程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

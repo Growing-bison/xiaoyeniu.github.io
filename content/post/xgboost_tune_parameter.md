@@ -2,12 +2,15 @@
 ---
 title: "机器学习-xgboost-调参01
 "
-date: 2018-05-12T20:16:59+08:00
+date: 2018-05-12T22:16:59+08:00
 draft: True
 tags: ["python","机器学习","调参"]
 share: true
 ---
 
+这是在使用xgboost过程中简单调参过程。
+
+<!--more-->
 
 ```python
 #Import libraries:
